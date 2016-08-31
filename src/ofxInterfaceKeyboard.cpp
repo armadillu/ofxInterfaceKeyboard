@@ -111,10 +111,10 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 
 		for( Json::ValueIterator itr = json["buttons"].begin() ; itr != json["buttons"].end() ; itr++ ) {
 
-			float x = (*itr)["rect"][0].asFloat();
-			float y = (*itr)["rect"][1].asFloat();
-			float w = (*itr)["rect"][2].asFloat();
-			float h = (*itr)["rect"][3].asFloat();
+			float x = (*itr)["rect"][0].asFloat() * scale;
+			float y = (*itr)["rect"][1].asFloat() * scale;
+			float w = (*itr)["rect"][2].asFloat() * scale;
+			float h = (*itr)["rect"][3].asFloat() * scale;
 			KeyboardButton * k = new KeyboardButton();
 			k->setPosition(x,y);
 			k->setSize(w,h);
@@ -160,10 +160,10 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 		for( Json::ValueIterator itr = json["specialKeys"].begin() ; itr != json["specialKeys"].end() ; itr++ ) {
 
 			string specialCommand = itr.key().asString();
-			float x = (*itr)[0].asFloat();
-			float y = (*itr)[1].asFloat();
-			float w = (*itr)[2].asFloat();
-			float h = (*itr)[3].asFloat();
+			float x = (*itr)[0].asFloat() * scale;
+			float y = (*itr)[1].asFloat() * scale;
+			float w = (*itr)[2].asFloat() * scale;
+			float h = (*itr)[3].asFloat() * scale;
 
 			KeyboardButton * k = new KeyboardButton();
 			k->setPosition(x,y);
