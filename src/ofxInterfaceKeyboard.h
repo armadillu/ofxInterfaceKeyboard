@@ -6,12 +6,11 @@
 //
 //
 
-#ifndef __PortraitMachine__ofxInterfaceKeyboard__
-#define __PortraitMachine__ofxInterfaceKeyboard__
+#ifndef __ofxInterfaceKeyboard__
+#define __ofxInterfaceKeyboard__
 
 #include "ofMain.h"
 #include "ofxInterface.h"
-#include "ofxAutoTexture.h"
 #include "ofxJSON.h"
 
 using namespace ofxInterface;
