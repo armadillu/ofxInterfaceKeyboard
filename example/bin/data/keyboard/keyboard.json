@@ -1,0 +1,92 @@
+{
+	"images": [
+		{
+			"states" : ["default"], //"default" is a reserved keyboard for state, all keyboards MUST have a "default" state
+			"images":{
+				"depressed" : "keyboard/keyboardOff.png",
+				"pressed" : "keyboard/keyboardOn.png"
+			}
+		},		
+		{
+			"states" : ["shift"],
+			"images":{
+				"depressed" : "keyboard/keyboardShiftOff.png",
+				"pressed" : "keyboard/keyboardShiftOn.png"
+			}
+		},
+		{
+			"states" : ["alt"],
+			"images":{
+				"depressed" : "keyboard/keyboardAltOff.png",
+				"pressed" : "keyboard/keyboardAltOn.png"
+			}
+		},
+		{
+			"states" : ["alt", "shift"],
+			"images":{
+				"depressed" : "keyboard/keyboardAltShiftOff.png",
+				"pressed" : "keyboard/keyboardAltShiftOn.png"
+			}
+		}
+	],
+	
+	"buttons": [
+		{ //this is a regular key, its default state is "a", when kb state is "shift" the char is "A", etc
+			"rect" : [50,104,80,76],
+			"chars" : {
+				"a" : ["default"],
+				"A" : ["shift"],
+				"å" : ["alt"],
+				"Å" : ["alt", "shift"] //when in the compound state ("alt" + "shift"), type "Å"
+			}
+		},
+		{ //this is a regular key, its default state is "a", when kb state is "shift" the char is "A", etc
+			"rect" : [486,195,80,76],
+			"chars" : {
+				"b" : ["default"],
+				"B" : ["shift"],
+				"ß" : ["alt"]
+			}
+		},
+		{ 
+			"rect" : [10,11,80,76],
+			"chars" : {
+				"q" : ["default"],
+				"Q" : ["shift"],
+				"œ" : ["alt"]
+			}
+		},
+		{ 
+			"rect" : [106,11,80,76],
+			"chars" : {
+				"w" : ["default"],
+				"W" : ["shift"],
+				"æ" : ["alt"]
+			}
+		},
+		{ 
+			"rect" : [205,11,80,76],
+			"chars" : {
+				"e" : ["default"],
+				"E" : ["shift"],
+				"€" : ["alt"]
+			}
+		},
+		{ //this is a modifier key - when pressed, the state becomes "shift"
+			"rect" : [10,195,80,76],
+			"modifier" : "shift"
+		},
+		{ //this is another modifier key - when pressed, the state becomes "alt"
+			"rect" : [10,285,270,78],
+			"modifier" : "alt"
+		}
+	],
+	"specialKeys":{
+		"backspace" : [986,10,80,76]
+	},
+	
+	"config":{
+		"touchRegionScale" : 1.0 //use this to scale all the defined rects - in case you need a higher dpi image later on
+	}
+}
+
