@@ -27,7 +27,6 @@ void ofApp::setup(){
 	keyboard.setScale(1.0);
 	keyboard.setPosition(50,60);
 
-
 	// add it to the scene
 	scene->addChild(&keyboard);
 
@@ -48,7 +47,6 @@ void ofApp::draw(){
 	if (bShowDebug) {
 		scene->renderDebug();
 	}
-
 
 	ofSetColor(255);
 	ofDrawBitmapString("hit 'd' to toggle debug rendering", 5, ofGetHeight()-8);

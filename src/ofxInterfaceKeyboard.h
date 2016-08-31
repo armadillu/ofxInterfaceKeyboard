@@ -37,6 +37,8 @@ public:
 	}
 };
 
+
+
 class ofxInterfaceKeyboard: public Node{
 
 public:
@@ -44,24 +46,29 @@ public:
 	ofxInterfaceKeyboard();
 	~ofxInterfaceKeyboard();
 	
-	void setup(float x, float y, float w, float h);
+	void loadConfig(const string & path);
 
 	void update(float dt);
-	void loadConfig(const string & path);
 	void draw();
 	
 	void drawDebug();	 // debug debugging stuff (will be called by renderDebug)
-	void drawBounds();   // overide for debugging if bounds are not rectangular
-	bool contains(const ofVec3f& globalPoint);
 
 	string getContent(){return content;}
 	void clearContent(){content = "";}
 
-	//events
-	void onClick(TouchEvent&);
-	void onTouchDown(TouchEvent& event);
-	void onTouchMove(TouchEvent& event);
-	void onTouchUp(TouchEvent& event);
+
+	struct KeyboardEvent{
+		KeyboardButton::Type type;
+		string keyChar;
+		string modifierID;
+		string specialCommand;
+	};
+
+	ofEvent<KeyboardEvent> onKeyClicked; //triggers event for every click (all keys types!)
+	ofEvent<KeyboardEvent> onKeyDown; //todo!
+	ofEvent<KeyboardEvent> onKeyUp; //todo!
+
+protected:
 
 	void onCharKeyClick(TouchEvent & t);
 	void onModifierKeyClick(TouchEvent & t);
@@ -69,8 +76,6 @@ public:
 
 	void onCharKeyDown(TouchEvent & t);
 	void onCharKeyUp(TouchEvent & t);
-
-protected:
 
 	void clearKeyboard();
 

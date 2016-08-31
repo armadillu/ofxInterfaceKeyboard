@@ -12,19 +12,7 @@ ofxInterfaceKeyboard::ofxInterfaceKeyboard(){
 }
 
 ofxInterfaceKeyboard::~ofxInterfaceKeyboard(){
-	ofRemoveListener(eventTouchDown, this, &ofxInterfaceKeyboard::onTouchDown);
-	ofRemoveListener(eventTouchUp, this, &ofxInterfaceKeyboard::onTouchUp);
-	ofRemoveListener(eventTouchMove, this, &ofxInterfaceKeyboard::onTouchMove);
-	ofRemoveListener(eventClick, this, &ofxInterfaceKeyboard::onClick);
-}
-
-void ofxInterfaceKeyboard::setup(float x, float y, float w, float h){
-	ofAddListener(eventTouchDown, this, &ofxInterfaceKeyboard::onTouchDown);
-	ofAddListener(eventTouchUp, this, &ofxInterfaceKeyboard::onTouchUp);
-	ofAddListener(eventTouchMove, this, &ofxInterfaceKeyboard::onTouchMove);
-	ofAddListener(eventClick, this, &ofxInterfaceKeyboard::onClick);
-	setSize(w, h);
-	setPosition(x, y, 0);
+	clearKeyboard();
 }
 
 
@@ -212,6 +200,12 @@ void ofxInterfaceKeyboard::onSpecialKeyClick(TouchEvent & t){
 	KeyboardButton * b = (KeyboardButton *)t.receiver;
 	ofLogNotice("ofxInterfaceKeyboard") << "user pressed special key '" << b->specialCommand << "'";
 	handleSpecialKey(b->specialCommand);
+
+	KeyboardEvent ke;
+	ke.type = KeyboardButton::SPECIAL_KEY;
+	ke.specialCommand = b->specialCommand;
+	ofNotifyEvent(onKeyClicked, ke);
+
 }
 
 void ofxInterfaceKeyboard::onModifierKeyClick(TouchEvent & t){
@@ -219,6 +213,11 @@ void ofxInterfaceKeyboard::onModifierKeyClick(TouchEvent & t){
 	KeyboardButton * b = (KeyboardButton *)t.receiver;
 	ofLogNotice("ofxInterfaceKeyboard") << "user pressed modifier key '" << b->modifier << "'";
 	toggleState(b->modifier);
+
+	KeyboardEvent ke;
+	ke.type = KeyboardButton::MODIFIER_KEY;
+	ke.modifierID = b->modifier;
+	ofNotifyEvent(onKeyClicked, ke);
 }
 
 void ofxInterfaceKeyboard::onCharKeyClick(TouchEvent & t){
@@ -227,6 +226,10 @@ void ofxInterfaceKeyboard::onCharKeyClick(TouchEvent & t){
 	string keyCode = b->keycodeForState(stateStr);
 	ofLogNotice("ofxInterfaceKeyboard") << "user pressed char key '" << keyCode << "'";
 	content += keyCode;
+	KeyboardEvent ke;
+	ke.type = KeyboardButton::CHAR_KEY;
+	ke.keyChar = keyCode;
+	ofNotifyEvent(onKeyClicked, ke);
 }
 
 void ofxInterfaceKeyboard::onCharKeyDown(TouchEvent & t){
@@ -283,25 +286,5 @@ void ofxInterfaceKeyboard::draw(){
 void ofxInterfaceKeyboard::drawDebug(){
 	Node::drawDebug();
 	ofDrawBitmapStringHighlight("Content: " + content, 2, -18);
-}
-
-void ofxInterfaceKeyboard::drawBounds(){
-	Node::drawBounds();
-}
-
-bool ofxInterfaceKeyboard::contains(const ofVec3f& globalPoint){
-	return Node::contains(globalPoint);
-}
-
-void ofxInterfaceKeyboard::onClick(TouchEvent&){
-}
-
-void ofxInterfaceKeyboard::onTouchDown(TouchEvent& event){
-}
-
-void ofxInterfaceKeyboard::onTouchMove(TouchEvent& event){
-}
-
-void ofxInterfaceKeyboard::onTouchUp(TouchEvent& event){
 }
 
