@@ -285,6 +285,6 @@ void ofxInterfaceKeyboard::draw(){
 
 void ofxInterfaceKeyboard::drawDebug(){
 	Node::drawDebug();
-	ofDrawBitmapStringHighlight("Content: " + content, 2, -18);
+	ofDrawBitmapString("Content: " + content, 2, -18);
 }
 
