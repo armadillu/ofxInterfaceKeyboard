@@ -1,0 +1,255 @@
+{
+	"images": [
+		{
+			"states" : ["default"], //"default" is a reserved keyboard for state, all keyboards MUST have a "default" state
+			"images":{
+				"depressed" : "keyboard/keyboard.psd",
+				"pressed" : "keyboard/keyboardPress.psd"
+			}
+		},		
+		{
+			"states" : ["shift"],
+			"images":{
+				"depressed" : "keyboard/keyboardAlternate.psd",
+				"pressed" : "keyboard/keyboardAlternatePress.psd"
+			}
+		}
+	],
+	
+	"buttons": [
+		{"rect" : [1,1,68,68],
+			"chars" : {
+				"1" : ["default"],
+				"!" : ["shift"]
+			}
+		},
+		{"rect" : [79,1,68,68],
+			"chars" : {
+				"2" : ["default"],
+				"@" : ["shift"]
+			}
+		},
+		{"rect" : [157,1,68,68],
+			"chars" : {
+				"3" : ["default"],
+				"#" : ["shift"]
+			}
+		},
+		{"rect" : [235,1,68,68],
+			"chars" : {
+				"4" : ["default"],
+				"$" : ["shift"]
+			}
+		},
+		{"rect" : [312,1,68,68],
+			"chars" : {
+				"5" : ["default"],
+				"%" : ["shift"]
+			}
+		},
+		{"rect" : [390,1,68,68],
+			"chars" : {
+				"6" : ["default"],
+				"^" : ["shift"]
+			}
+		},
+		{"rect" : [468,1,68,68],
+			"chars" : {
+				"7" : ["default"],
+				"&" : ["shift"]
+			}
+		},
+		{"rect" : [546,1,68,68],
+			"chars" : {
+				"8" : ["default"],
+				"*" : ["shift"]
+			}
+		},
+		{"rect" : [624,1,68,68],
+			"chars" : {
+				"9" : ["default"],
+				"+" : ["shift"]
+			}
+		},
+		{"rect" : [702,1,68,68],
+			"chars" : {
+				"0" : ["default"],
+				"=" : ["shift"]
+			}
+		}, //////////////////////////////////////////////////////////////////////// END ROW 1
+		{"rect" : [18,78,68,68],
+			"chars" : {
+				"q" : ["default"],
+				"`" : ["shift"]
+			}
+		},
+		{"rect" : [96,78,68,68],
+			"chars" : {
+				"w" : ["default"],
+				"~" : ["shift"]
+			}
+		},
+		{"rect" : [174,78,68,68],
+			"chars" : {
+				"e" : ["default"]
+			}
+		},
+		{"rect" : [252,78,68,68],
+			"chars" : {
+				"r" : ["default"]
+			}
+		},
+		{"rect" : [330,78,68,68],
+			"chars" : {
+				"t" : ["default"]
+			}
+		},
+		{"rect" : [408,78,68,68],
+			"chars" : {
+				"y" : ["default"]
+			}
+		},
+		{"rect" : [486,78,68,68],
+			"chars" : {
+				"u" : ["default"]
+			}
+		},
+		{"rect" : [564,78,68,68],
+			"chars" : {
+				"i" : ["default"]
+			}
+		},
+		{"rect" : [642,78,68,68],
+			"chars" : {
+				"o" : ["default"],
+				"{" : ["shift"]
+			}
+		},
+		{"rect" : [720,78,68,68],
+			"chars" : {
+				"p" : ["default"],
+				"}" : ["shift"]
+			}
+		},
+		{"rect" : [798,78,68,68],
+			"chars" : {
+				"_" : ["default"],
+				"|" : ["shift"]
+			}
+		},
+		//////////////////////////////////////////////////////////// END ROW 2
+		{"rect" : [58,156,68,68],
+			"chars" : {
+				"a" : ["default"]
+			}
+		},
+		{"rect" : [136,156,68,68],
+			"chars" : {
+				"s" : ["default"]
+			}
+		},
+		{"rect" : [214,156,68,68],
+			"chars" : {
+				"d" : ["default"]
+			}
+		},
+		{"rect" : [292,156,68,68],
+			"chars" : {
+				"f" : ["default"]
+			}
+		},
+		{"rect" : [370,156,68,68],
+			"chars" : {
+				"g" : ["default"]
+			}
+		},
+		{"rect" : [448,156,68,68],
+			"chars" : {
+				"h" : ["default"]
+			}
+		},
+		{"rect" : [526,156,68,68],
+			"chars" : {
+				"j" : ["default"]
+			}
+		},
+		{"rect" : [604,156,68,68],
+			"chars" : {
+				"k" : ["default"]
+			}
+		},
+		{"rect" : [682,156,68,68],
+			"chars" : {
+				"l" : ["default"]
+			}
+		},
+		{"rect" : [760,156,68,68],
+			"chars" : {
+				"-" : ["default"],
+				"'" : ["shift"]
+			}
+		},
+		//////////////////////////////////////////////////////////// END ROW 3
+		{"rect" : [182,235,68,68],
+			"chars" : {
+				"z" : ["default"]
+			}
+		},
+			{"rect" : [260,235,68,68],
+			"chars" : {
+				"x" : ["default"]
+			}
+		},
+		{"rect" : [338,235,68,68],
+			"chars" : {
+				"c" : ["default"]
+			}
+		},
+		{"rect" : [416,235,68,68],
+			"chars" : {
+				"v" : ["default"]
+			}
+		},
+		{"rect" : [494,235,68,68],
+			"chars" : {
+				"b" : ["default"]
+			}
+		},
+		{"rect" : [572,235,68,68],
+			"chars" : {
+				"n" : ["default"]
+			}
+		},
+		{"rect" : [650,235,68,68],
+			"chars" : {
+				"m" : ["default"]
+			}
+		},
+		{"rect" : [728,235,68,68],
+			"chars" : {
+				"." : ["default"],
+				"/" : ["shift"]
+			}
+		},
+		{"rect" : [806,235,68,68],
+			"chars" : {
+				"@" : ["default"],
+				"?" : ["shift"]
+			}
+		},
+		//////////////////////////////////////////////////////////// END ROW 4
+		//////////////////////////////////////////////////////////// SPECIAL KEYS
+		{ //this is a modifier key - when pressed, the state becomes "shift"
+			"rect" : [21,235,151,68],
+			"modifier" : "shift"
+		}
+	],
+	"specialKeys":{
+		"backspace" : [781,1,112,68]
+	},
+	
+	"config":{
+		"touchRegionScale" : 1.0 //use this to scale all the defined rects - in case you need a higher dpi image later on
+	}
+}
+

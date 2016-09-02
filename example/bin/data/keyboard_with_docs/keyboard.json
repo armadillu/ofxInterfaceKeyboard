@@ -3,29 +3,29 @@
 		{
 			"states" : ["default"], //"default" is a reserved keyboard for state, all keyboards MUST have a "default" state
 			"images":{
-				"depressed" : "keyboard/keyboardOff.png",
-				"pressed" : "keyboard/keyboardOn.png"
+				"depressed" : "keyboard_with_docs/keyboardOff.png",
+				"pressed" : "keyboard_with_docs/keyboardOn.png"
 			}
 		},		
 		{
 			"states" : ["shift"],
 			"images":{
-				"depressed" : "keyboard/keyboardShiftOff.png",
-				"pressed" : "keyboard/keyboardShiftOn.png"
+				"depressed" : "keyboard_with_docs/keyboardShiftOff.png",
+				"pressed" : "keyboard_with_docs/keyboardShiftOn.png"
 			}
 		},
 		{
 			"states" : ["alt"],
 			"images":{
-				"depressed" : "keyboard/keyboardAltOff.png",
-				"pressed" : "keyboard/keyboardAltOn.png"
+				"depressed" : "keyboard_with_docs/keyboardAltOff.png",
+				"pressed" : "keyboard_with_docs/keyboardAltOn.png"
 			}
 		},
 		{
 			"states" : ["alt", "shift"],
 			"images":{
-				"depressed" : "keyboard/keyboardAltShiftOff.png",
-				"pressed" : "keyboard/keyboardAltShiftOn.png"
+				"depressed" : "keyboard_with_docs/keyboardAltShiftOff.png",
+				"pressed" : "keyboard_with_docs/keyboardAltShiftOn.png"
 			}
 		}
 	],

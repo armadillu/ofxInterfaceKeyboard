@@ -147,6 +147,8 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 				k->setName(modifier);
 
 				ofAddListener(k->eventClick, this, &ofxInterfaceKeyboard::onModifierKeyClick);
+				ofAddListener(k->eventTouchDown, this, &ofxInterfaceKeyboard::onCharKeyDown);
+				ofAddListener(k->eventTouchUp, this, &ofxInterfaceKeyboard::onCharKeyUp);
 				modifierButtons.push_back(k);
 
 			}
@@ -169,6 +171,8 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 			k->specialCommand = specialCommand;
 			addChild(k);
 			ofAddListener(k->eventClick, this, &ofxInterfaceKeyboard::onSpecialKeyClick);
+			ofAddListener(k->eventTouchDown, this, &ofxInterfaceKeyboard::onCharKeyDown);
+			ofAddListener(k->eventTouchUp, this, &ofxInterfaceKeyboard::onCharKeyUp);
 			specialButtons.push_back(k);
 		}
 		ofLogNotice("ofxInterfaceKeyboard") << "loaded JSON config! " << path;
