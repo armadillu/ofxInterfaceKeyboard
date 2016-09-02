@@ -150,7 +150,6 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 				ofAddListener(k->eventTouchDown, this, &ofxInterfaceKeyboard::onCharKeyDown);
 				ofAddListener(k->eventTouchUp, this, &ofxInterfaceKeyboard::onCharKeyUp);
 				modifierButtons.push_back(k);
-
 			}
 		}
 
