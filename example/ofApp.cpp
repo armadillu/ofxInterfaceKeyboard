@@ -8,7 +8,7 @@ using namespace ofxInterface;
 void ofApp::setup(){
 
 	ofEnableAlphaBlending();
-	ofBackground(0);
+	ofBackground(64);
 
 	/******
 	 * setup the scene with width and height
@@ -23,12 +23,20 @@ void ofApp::setup(){
 	TouchManager::one().setup(scene);
 
 	keyboard.loadConfig("keyboard/keyboard.json");
-	keyboard.setPlane(1);
 	keyboard.setScale(1.0);
 	keyboard.setPosition(50,60);
 
 	// add it to the scene
 	scene->addChild(&keyboard);
+
+
+	keyboard2.loadConfig("keyboard_with_docs/keyboard.json");
+	keyboard2.setScale(0.82);
+	keyboard2.setPosition(50,460);
+
+	// add it to the scene
+	scene->addChild(&keyboard2);
+
 
 }
 

@@ -24,6 +24,7 @@ class ofApp : public ofBaseApp{
 		ofxInterface::Node* scene;
 
 		ofxInterfaceKeyboard keyboard;
+		ofxInterfaceKeyboard keyboard2;
 
-		bool bShowDebug = true;
+		bool bShowDebug = false;
 };

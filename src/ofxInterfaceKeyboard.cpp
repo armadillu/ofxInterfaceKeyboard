@@ -90,8 +90,16 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 			string pressedImgPath = (*itr)["images"]["pressed"].asString();
 			texSet.depressed = new ofTexture();
 			texSet.pressed = new ofTexture();
-			ofLoadImage(*texSet.depressed, depressedImgPath);
-			ofLoadImage(*texSet.pressed, pressedImgPath);
+			bool ok = ofLoadImage(*texSet.depressed, depressedImgPath);
+			if(!ok){
+				ofLogError("ofxInterfaceKeyboard") << "Can't load Keyboard Image : " << depressedImgPath;
+				exit(-1);
+			}
+			ok = ofLoadImage(*texSet.pressed, pressedImgPath);
+			if(!ok){
+				ofLogError("ofxInterfaceKeyboard") << "Can't load Keyboard Image : " << depressedImgPath;
+				exit(-1);
+			}
 			kbTextures[stateHash] = texSet;
 			setSize(texSet.depressed->getWidth(),texSet.depressed->getHeight());
 		}
@@ -224,12 +232,14 @@ void ofxInterfaceKeyboard::onCharKeyClick(TouchEvent & t){
 
 	KeyboardButton * b = (KeyboardButton *)t.receiver;
 	string keyCode = b->keycodeForState(stateStr);
-	ofLogNotice("ofxInterfaceKeyboard") << "user pressed char key '" << keyCode << "'";
-	content += keyCode;
-	KeyboardEvent ke;
-	ke.type = KeyboardButton::CHAR_KEY;
-	ke.keyChar = keyCode;
-	ofNotifyEvent(onKeyClicked, ke);
+	if(keyCode.size()){
+		ofLogNotice("ofxInterfaceKeyboard") << "user pressed char key '" << keyCode << "'";
+		content += keyCode;
+		KeyboardEvent ke;
+		ke.type = KeyboardButton::CHAR_KEY;
+		ke.keyChar = keyCode;
+		ofNotifyEvent(onKeyClicked, ke);
+	}
 }
 
 void ofxInterfaceKeyboard::onCharKeyDown(TouchEvent & t){
@@ -285,6 +295,6 @@ void ofxInterfaceKeyboard::draw(){
 
 void ofxInterfaceKeyboard::drawDebug(){
 	Node::drawDebug();
-	ofDrawBitmapString("Content: " + content, 2, -18);
+	ofDrawBitmapStringHighlight("Content: " + content, 2, -18);
 }
 
