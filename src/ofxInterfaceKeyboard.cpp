@@ -114,7 +114,7 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 			KeyboardButton * k = new KeyboardButton();
 			k->setPosition(x,y);
 			k->setSize(w,h);
-			k->setPlane(1000);
+			k->setPlane(1);
 			addChild(k);
 
 			if((*itr)["chars"].isObject()){ //this is a "normal" key
