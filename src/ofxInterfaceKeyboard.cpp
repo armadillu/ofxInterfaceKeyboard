@@ -61,7 +61,7 @@ string ofxInterfaceKeyboard::hash(const vector<string> & states){
 
 void ofxInterfaceKeyboard::loadConfig(const string & path){
 
-	ofxJSON json;
+	ofxJSONElement json;
 	bool ok = json.openLocal(path);
 
 	if(ok){
