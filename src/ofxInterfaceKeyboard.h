@@ -54,6 +54,7 @@ public:
 	void drawDebug();	 // debug debugging stuff (will be called by renderDebug)
 
 	string getContent(){return content;}
+	void setContent(const string& str){content=str;}
 	void clearContent(){content = "";}
 
 
