@@ -181,6 +181,12 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 	}
 }
 
+void ofxInterfaceKeyboard::reset(){
+	currentStates.clear();
+	pressedChars.clear();
+	stateStr = "default";
+}
+
 void ofxInterfaceKeyboard::toggleState(const string & state){
 	if (std::find(knownStates.begin(), knownStates.end(), state) != knownStates.end()){
 		auto it = std::find(currentStates.begin(), currentStates.end(), state);

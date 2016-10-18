@@ -50,6 +50,7 @@ public:
 
 	void update(float dt);
 	void draw();
+	void reset();
 	
 	void drawDebug();	 // debug debugging stuff (will be called by renderDebug)
 
