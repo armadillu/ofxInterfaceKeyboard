@@ -11,7 +11,6 @@
 
 #include "ofMain.h"
 #include "ofxInterface.h"
-#include "ofxJSON.h"
 
 using namespace ofxInterface;
 

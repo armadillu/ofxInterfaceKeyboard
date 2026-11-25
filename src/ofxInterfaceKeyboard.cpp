@@ -61,22 +61,31 @@ string ofxInterfaceKeyboard::hash(const vector<string> & states){
 
 void ofxInterfaceKeyboard::loadConfig(const string & path){
 
-	ofxJSONElement json;
-	bool ok = json.openLocal(path);
+	ofJson json;
+	bool ok = false;
+	try{
+		ofFile file(path);
+		if(file.exists()){
+			json = ofJson::parse(file, nullptr, true, true); // Allow comments in keyboard configs.
+			ok = true;
+		}
+	}catch(const std::exception & e){
+		ofLogError("ofxInterfaceKeyboard") << "Error parsing JSON " << path << ": " << e.what();
+	}
 
 	if(ok){
 
 		clearKeyboard();
 
-		float scale = json["config"]["touchRegionScale"].asFloat();
+		float scale = json["config"]["touchRegionScale"].get<float>();
 
-		for( Json::ValueIterator itr = json["images"].begin() ; itr != json["images"].end() ; itr++ ) {
+		for( ofJson::iterator itr = json["images"].begin() ; itr != json["images"].end() ; itr++ ) {
 
 			//states
 			vector<string> kbStates;
 			int nstates = (*itr)["states"].size();
 			for(int i = 0; i < nstates; i++){
-				string state = (*itr)["states"][i].asString();
+				string state = (*itr)["states"][i].get<string>();
 				kbStates.push_back(state);
 
 				if(std::find(knownStates.begin(), knownStates.end(), state) == knownStates.end()){
@@ -86,8 +95,8 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 
 			string stateHash = hash(kbStates);
 			KeyboardTextureSet texSet;
-			string depressedImgPath = (*itr)["images"]["depressed"].asString();
-			string pressedImgPath = (*itr)["images"]["pressed"].asString();
+			string depressedImgPath = (*itr)["images"]["depressed"].get<string>();
+			string pressedImgPath = (*itr)["images"]["pressed"].get<string>();
 			texSet.depressed = new ofTexture();
 			texSet.pressed = new ofTexture();
 			bool ok = ofLoadImage(*texSet.depressed, depressedImgPath);
@@ -105,27 +114,27 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 		}
 
 
-		for( Json::ValueIterator itr = json["buttons"].begin() ; itr != json["buttons"].end() ; itr++ ) {
+		for( ofJson::iterator itr = json["buttons"].begin() ; itr != json["buttons"].end() ; itr++ ) {
 
-			float x = (*itr)["rect"][0].asFloat() * scale;
-			float y = (*itr)["rect"][1].asFloat() * scale;
-			float w = (*itr)["rect"][2].asFloat() * scale;
-			float h = (*itr)["rect"][3].asFloat() * scale;
+			float x = (*itr)["rect"][0].get<float>() * scale;
+			float y = (*itr)["rect"][1].get<float>() * scale;
+			float w = (*itr)["rect"][2].get<float>() * scale;
+			float h = (*itr)["rect"][3].get<float>() * scale;
 			KeyboardButton * k = new KeyboardButton();
 			k->setPosition(x,y);
 			k->setSize(w,h);
 			addChild(k);
 
-			if((*itr)["chars"].isObject()){ //this is a "normal" key
+			if((*itr)["chars"].is_object()){ //this is a "normal" key
 
 				k->keyType = KeyboardButton::CHAR_KEY;
 				//walk all keycodes depending on modifier keys
 				for( auto itr2 = (*itr)["chars"].begin() ; itr2 != (*itr)["chars"].end() ; itr2++ ) {
-					string keyChar = itr2.key().asString();
+					string keyChar = itr2.key();
 					int nStates = (*itr2).size();
 					vector<string> keyStates;
 					for(int i = 0; i < nStates; i++){
-						keyStates.push_back((*itr2)[i].asString());
+						keyStates.push_back((*itr2)[i].get<string>());
 					}
 					string stateHash = hash(keyStates);
 					k->chars[stateHash] = keyChar; //add all per-state keycodes to the keybutton itself
@@ -141,7 +150,7 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 
 			}else{ //this is a modifier key!
 				k->keyType = KeyboardButton::MODIFIER_KEY;
-				string modifier = (*itr)["modifier"].asString();
+				string modifier = (*itr)["modifier"].get<string>();
 				k->modifier = modifier;
 				k->setName(modifier);
 
@@ -153,13 +162,13 @@ void ofxInterfaceKeyboard::loadConfig(const string & path){
 		}
 
 		//parse special keys
-		for( Json::ValueIterator itr = json["specialKeys"].begin() ; itr != json["specialKeys"].end() ; itr++ ) {
+		for( ofJson::iterator itr = json["specialKeys"].begin() ; itr != json["specialKeys"].end() ; itr++ ) {
 
-			string specialCommand = itr.key().asString();
-			float x = (*itr)[0].asFloat() * scale;
-			float y = (*itr)[1].asFloat() * scale;
-			float w = (*itr)[2].asFloat() * scale;
-			float h = (*itr)[3].asFloat() * scale;
+			string specialCommand = itr.key();
+			float x = (*itr)[0].get<float>() * scale;
+			float y = (*itr)[1].get<float>() * scale;
+			float w = (*itr)[2].get<float>() * scale;
+			float h = (*itr)[3].get<float>() * scale;
 
 			KeyboardButton * k = new KeyboardButton();
 			k->setPosition(x,y);

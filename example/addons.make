@@ -1,3 +1,2 @@
 ofxInterface
 ofxInterfaceKeyboard
-ofxJSON
